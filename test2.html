@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rida Store - متجر الملابس الرجالية</title>
+   <link rel="stylesheet" href="test2.css">
+</head>
+<body>
+
+    <!-- صفحة التسجيل / تسجيل الدخول -->
+    <div id="auth-page">
+        <div class="auth-container">
+            <div class="left-panel">
+                <h1>RIDA STORE</h1>
+            </div>
+            <div class="right-panel">
+                <h2 id="formTitle">تسجيل حساب جديد</h2>
+                
+                <form id="authForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="الاسم الكامل" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="كلمة المرور" required>
+                    </div>
+
+                    <button type="submit" class="btn" id="submitBtn">تسجيل</button>
+                </form>
+
+                <p class="switch-text">
+                    لديك حساب بالفعل؟ 
+                    <a id="switchLink">تسجيل الدخول</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة المتجر -->
+    <div id="shop-page">
+        <header>
+            <div class="logo">RIDA STORE</div>
+            <div class="cart" onclick="alert('سلة التسوق فارغة حالياً')">🛒 السلة (0)</div>
+        </header>
+
+        <div class="hero">
+            <div>
+                <h1>ملابس رجالية أنيقة</h1>
+                <p style="font-size:1.4rem; margin-top:10px;">Rida Store - أفضل التصاميم للرجال</p>
+            </div>
+        </div>
+
+        <div class="products">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            
+            <div class="grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1505022610485-0249ba5b3675?w=600" alt="بدلة">
+                    <div class="product-info">
+                        <h3>بدلة كلاسيكية سوداء</h3>
+                        <div class="price">١٢٩٩ درهم</div>
+                        <button class="buy-btn" onclick="addToCart(this)">أضف إلى السلة</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600" alt="قميص">
+                    <div class="product-info">
+                        <h3>قميص أكسفورد أبيض</h3>
+                        <div class="price">٢٤٩ درهم</div>
+                        <button class="buy-btn" onclick="addToCart(this)">أضف إلى السلة</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1622445275576-721325763afe?w=600" alt="جاكيت">
+                    <div class="product-info">
+                        <h3>جاكيت جلد بني فاخر</h3>
+                        <div class="price">٨٩٩ درهم</div>
+                        <button class="buy-btn" onclick="addToCart(this)">أضف إلى السلة</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=600" alt="بنطال">
+                    <div class="product-info">
+                        <h3>بنطال جينز سلمون</h3>
+                        <div class="price">٣٢٩ درهم</div>
+                        <button class="buy-btn" onclick="addToCart(this)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isRegister = true;
+        let cartCount = 0;
+
+        const authPage = document.getElementById('auth-page');
+        const shopPage = document.getElementById('shop-page');
+        const formTitle = document.getElementById('formTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const switchLink = document.getElementById('switchLink');
+        const nameField = document.getElementById('name');
+
+        // تبديل بين التسجيل وتسجيل الدخول
+        switchLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            isRegister = !isRegister;
+
+            if (isRegister) {
+                formTitle.textContent = 'تسجيل حساب جديد';
+                submitBtn.textContent = 'تسجيل';
+                nameField.style.display = 'block';
+                switchLink.textContent = 'تسجيل الدخول';
+            } else {
+                formTitle.textContent = 'تسجيل الدخول';
+                submitBtn.textContent = 'دخول';
+                nameField.style.display = 'none';
+                switchLink.textContent = 'إنشاء حساب';
+            }
+        });
+        
+        // إرسال النموذج → الانتقال إلى صفحة المتجر
+        document.getElementById('authForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            authPage.style.display = 'none';
+            shopPage.style.display = 'block';
+            alert('✅ مرحباً بك في Rida Store!');
+        });
+
+        // إضافة إلى السلة
+        function addToCart(btn) {
+            cartCount++;
+            document.querySelector('.cart').textContent = `🛒 السلة (${cartCount})`;
+            btn.textContent = 'تمت الإضافة ✓';
+            btn.style.background = '#28a745';
+            
+            setTimeout(() => {
+                btn.textContent = 'أضف إلى السلة';
+                btn.style.background = '#006666';
+            }, 1800);
+        }
+    </script>
+
+</body>
+</html>

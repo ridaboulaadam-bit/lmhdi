@@ -1,0 +1,9 @@
+.navbar{
+    position: relative;
+    padding: 15px  20px;
+    background:  rgba(28, 44, 161, 0.351);
+    border-radius: 60px;
+    backdrop-filter: b;
+    box-shadow:  15px  35px  rgba(161, 17, 17, 0.5);
+    border: 0.5px solid #77a922;
+}

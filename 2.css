@@ -1,0 +1,97 @@
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.phone {
+    position: relative;
+    width: 300px;
+    height: 500px;
+}
+
+.text {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    color: #00ff6b;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+}
+
+.status {
+    width: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 125px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 3;
+    color: #fff;
+}
+
+.charging {
+    font-size: 3em;
+    font-family: sans-serif;
+}
+
+.contrast {
+    filter: blur(10px) contrast(15); /* هاد الخاصية هي اللي كتدير داك الشكل السائل */
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.blackhole {
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-color: #00ff6b;
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+.lithium {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+    background-color: #00ff6b;
+    border-radius: 50% 50% 0 0;
+    filter: blur(5px);
+}
+
+.lithium li {
+    position: absolute;
+    list-style: none;
+    background: #00ff6b;
+    border-radius: 50%;
+    bottom: 0;
+    animation: moveUp 4s infinite ease-in;
+}
+
+/* حركة الفقاعات من التحت للفوق */
+@keyframes moveUp {
+    0% { bottom: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { bottom: 300px; opacity: 0; }
+}
+
+/* توزيع عشوائي للفقاعات */
+.lithium li:nth-child(1) { width: 20px; height: 20px; left: 20%; animation-delay: 1s; }
+.lithium li:nth-child(2) { width: 25px; height: 25px; left: 40%; animation-delay: 2s; }
+.lithium li:nth-child(3) { width: 15px; height: 15px; left: 60%; animation-delay: 3s; }
+.lithium li:nth-child(4) { width: 30px; height: 30px; left: 80%; animation-delay: 0.5s; }
